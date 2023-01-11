@@ -1,143 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Calculator</title>
-	<style>
-		* {
-			margin-top: 20px; 
-		}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      * {
+        margin-top: 20px;
+      }
 
-		body {
-			box-sizing: border-box;
-			margin: 0;
-			padding: 0 200px;
-			align-content: center;
-			justify-content: center;
-			background-color: #f6ead4;
-		}
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0 200px;
+        align-content: center;
+        justify-content: center;
+        background-color: #f6ead4;
+      }
 
-		h1 {
-			text-align: center;
-			color: #b4a284;
-		}
+      h1 {
+        text-align: center;
+        color: #b4a284;
+      }
 
-		div {
-			display: flex;
-			justify-content: space-around;
-		}
+      div {
+        display: flex;
+        justify-content: space-around;
+      }
 
-		#circle {
-			padding: 0;
-		}
+      #circle {
+        padding: 0;
+      }
 
-		#calculator {
-			padding: 0 50px;
-		}
+      #calculator {
+        padding: 0 50px;
+      }
 
-		.result_item {
-			display: grid;
-			margin-top: 80px;
-			align-content: center;
-			justify-content: center;
-		}
+      .result_item {
+        display: grid;
+        margin-top: 80px;
+        align-content: center;
+        justify-content: center;
+      }
 
-		.btn {
-			background-color: #b4a284;
-			color: #f6ead4;
-			padding: 10px 30px;
-			font-size: 20px;
-		}
+      .btn {
+        background-color: #b4a284;
+        color: #f6ead4;
+        padding: 10px 30px;
+        font-size: 20px;
+      }
 
-		.answer {
-			color: #b4a284;
-			text-shadow: 1px 1px 1px #000000 ;
-			align-content: center;
-			font-size: 20px;
-			padding-left: 10px;
-		}
+      .answer {
+        color: #b4a284;
+        text-shadow: 1px 1px 1px #000000;
+        align-content: center;
+        font-size: 20px;
+        padding-left: 10px;
+      }
 
-		/*Animation*/
+      /*Animation*/
 
-		.animation_circle {
-			width: 30px;
-			height: 30px;
-    		border-radius: 50%;
-    		background-color: #b4a284;
-    		position: relative;
-    		animation: circle linear 2s infinite alternate;
-  		}
-  
-		@keyframes circle {
-    		from {left: -100px; background-color: #b4a284;}
-    		to {left: 100px; background-color: #a2a595;}
-  		}
+      .animation_circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #b4a284;
+        position: relative;
+        animation: circle linear 2s infinite alternate;
+      }
 
-		.anim_c_1 {
-			animation-delay: -1s;
-  		}
+      @keyframes circle {
+        from {
+          left: -100px;
+          background-color: #b4a284;
+        }
+        to {
+          left: 100px;
+          background-color: #a2a595;
+        }
+      }
 
-  		.anim_c_2 {
-			animation-delay: -2s;
-  		}
-  
-  		.anim_c_3 {
-			animation-delay: -3s;
-  		}
-	</style>
-</head>
-<body>
-	<div>
-		<div id="circle" class="animation_circle anim_c_1"></div>
-		<div id="circle" class="animation_circle anim_c_2"></div>
-		<div id="circle" class="animation_circle anim_c_3"></div>
-	</div>
-	<h1>Calculator</h1>
-	<div>
-		<input type="number" id="num_1">
-		<select id='calculator'>
-			<option>+</option>
-			<option>-</option>
-			<option>*</option>
-			<option>/</option>
-		</select>
-		<input type="number" id="num_2">
-	</div>
+      .anim_c_1 {
+        animation-delay: -1s;
+      }
 
-	<div class="result_item">
-		<input type="button" class="btn" onclick="calculation();" value="Result"> 
-		<p class="answer" id="result"></p>
-	</div>
+      .anim_c_2 {
+        animation-delay: -2s;
+      }
 
-	<script>
-		function calculation() {
-			var result;
-			var calc = document.getElementById('calculator');
-			var action = calc.options[calc.selectedIndex].value
-			var num_1 = Number(document.getElementById("num_1").value);
-			var num_2 = Number(document.getElementById("num_2").value);
+      .anim_c_3 {
+        animation-delay: -3s;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="circle" class="animation_circle anim_c_1"></div>
+      <div id="circle" class="animation_circle anim_c_2"></div>
+      <div id="circle" class="animation_circle anim_c_3"></div>
+    </div>
+    <h1>Calculator</h1>
+    <div>
+      <input type="number" id="num_1" />
+      <select id="calculator">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+      </select>
+      <input type="number" id="num_2" />
+    </div>
 
-			switch (action){
-				case '+':
-				result = num_1 + num_2
-				break;
+    <div class="result_item">
+      <input
+        type="button"
+        class="btn"
+        onclick="calculation();"
+        value="Result"
+      />
+      <p class="answer" id="result"></p>
+    </div>
 
-				case '-':
-				result = num_1 - num_2
-				break;
+    <script>
+      function calculation() {
+        var result;
+        var calc = document.getElementById("calculator");
+        var action = calc.options[calc.selectedIndex].value;
+        var num_1 = Number(document.getElementById("num_1").value);
+        var num_2 = Number(document.getElementById("num_2").value);
 
-				case '*':
-				result = num_1 * num_2
-				break;
+        switch (action) {
+          case "+":
+            result = num_1 + num_2;
+            break;
 
-				case '/':
-				result = num_1 / num_2
-				break;
-			}
-			document.getElementById("result").innerHTML = 'Answer: ' + result;
+          case "-":
+            result = num_1 - num_2;
+            break;
 
-		}
-	</script>
-</body>
+          case "*":
+            result = num_1 * num_2;
+            break;
+
+          case "/":
+            result = num_1 / num_2;
+            break;
+        }
+        document.getElementById("result").innerHTML = "Answer: " + result;
+      }
+    </script>
+  </body>
 </html>
